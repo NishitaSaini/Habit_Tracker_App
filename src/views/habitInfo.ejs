@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/habitInfo.css" type="text/css">
+    </head>
+    <body style="background-color: #111118;">
+<section class="info">
+    <a href="/" class="back"><button><i class="bi bi-arrow-left-circle">Back</i></button></a> 
+    <div class="info-Status">
+       <div class="habit-name"> <h2 class="name"><i class="bi bi-pen"></i> <%= all_habits.name %></h2></div>
+        <div class="habit-track">
+        <% let a = 1 %>
+        <% for(let i = (all_habits.records.length - 1); i>=0; i--){ %>
+            <% if(a == 7){ break; } %>
+            <% a++; %>
+            <div class="track-box">
+            <p><%= all_habits.records[i].date %></p>
+            <form action="/update/<%= all_habits._id %>/<%= all_habits.records[i]._id %>" method="post">
+                <% if(all_habits.records[i].status === 'none') { %>
+                    <select name="status" class="status" value="None" style="background-color: rgb(255, 207, 16);">
+                        <option value="none" style="background-color: yellow;">None</option>
+                        <option value="done" style="background-color: green;">Done</option>
+                        <option value="not done" style="background-color: red;">Not Done</option>
+                    </select>
+                <% } %>
+                <% if(all_habits.records[i].status === 'done') { %>
+                    <select name="status" class="status" value="Done" style="background-color: green; color: aliceblue;">
+                        <option value="done" style="background-color: green;">Done</option>
+                        <option value="none" style="background-color: yellow;">None</option>
+                        <option value="not done" style="background-color: red;">Not Done</option>
+                    </select>
+                <% } %>
+                <% if(all_habits.records[i].status === 'not done') { %>
+                    <select name="status" class="status" value="Not Done" style="background-color: red; color: aliceblue;">
+                        <option value="not done" style="background-color: red;">Not Done</option>
+                        <option value="none" style="background-color: yellow;">None</option>
+                        <option value="done" style="background-color: green;">Done</option>
+                    </select>
+                <% } %>
+                <button type="submit" class="status-btn"><i class="bi bi-hand-thumbs-up-fill">Update</i></button>
+            </form>
+            </div>
+        <% } %>
+        </div>    
+    </div>
+</section>
+</body>
+</html>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->

@@ -1,0 +1,65 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+.info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+.info .back {
+    top: 100px;
+    right: 10px;
+    position: absolute;
+}
+.info .back button {
+    background-color: rgb(176, 193, 248);
+
+    border-radius: 10px;
+    font-weight: 900;
+}
+.info .back button:hover {
+    background-color: #3457f1;
+}
+/* .info-Status {
+    width: auto;
+} */
+.habit-name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.info .info-Status .name {
+    color: black;
+    text-transform: capitalize;
+    background-color: rgb(148, 193, 233);
+    border-radius: 2rem;
+    padding: 4px 10px;
+    text-align: center;
+    width: 50%;
+}
+.info .info-Status .habit-track {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.info .info-Status .habit-track .track-box {
+    background-color: #a7a5a5;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 0px 15px;
+}
+.info .info-Status .habit-track .track-box p {
+    font-size: 22px;
+    color: white;
+    border-bottom: 2px dotted rgba(255, 255, 255, 0.581);
+}
+.info .info-Status .habit-track .track-box form {
+    background-color: #67707c;
+    border-radius: 2rem;
+    padding: 4px 10px;
+}
+
+select {
+    font-size: 15px;
+    border-radius: 8px;
+}

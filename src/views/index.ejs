@@ -1,0 +1,67 @@
+<html>
+    <head>
+<link rel="stylesheet" href="index.css" type="text/css">
+</head>
+
+<body>
+<div class="center">
+    <main class="todo-Container">
+        <h1 class="heading"><i class="bi bi-pen">Track Habits</i></h1>
+        <form action="/addHabit" method="post" class="head">
+            <div class="description">
+                <input type="text" name="name" id="description" placeholder="Write Your Habit Here" required>
+            </div>
+            <div class="add-btn">
+                <button type="submit" id="add-task" class="btn"> <span class="btn-box"><i class="bi bi-plus"></i> Add Habit</span></button>
+            </div>
+        </form>
+    </main>
+
+    <% if(habits.length > 0){ %>
+        <div class="habit-list">
+            <% for(i of habits) { %>
+            <% let l = (i.records.length-1) %>
+            <div class="habit-list-item">
+                <div class="habit"><i class="bi bi-pen"></i>&nbsp;&nbsp;<%= i.name %></div>
+                <form action="/update/<%= i._id %>/<%= i.records[l]._id %>" method="post">
+                    <% if(i.records[l].status === 'none') { %>
+                        <i class="none-symbol bi bi-question-circle-fill"></i>
+                        <select name="status" class="status" value="None" style="background-color: rgb(255, 207, 16);">
+                            <option value="none" style="background-color: yellow;">None</option>
+                            <option value="done" style="background-color: green;">Done</option>
+                            <option value="not done" style="background-color: red;">Not Done</option>
+                        </select>
+                    <% } %>
+                    <% if(i.records[l].status === 'done') { %>
+                        <i class=" done-symbol bi bi-check-circle-fill"></i>
+                        <select name="status" class="status" value="Done" style="background-color: green; color: aliceblue;">
+                            <option value="done" style="background-color: green;">Done</option>
+                            <option value="none" style="background-color: yellow;">None</option>
+                            <option value="not done" style="background-color: red;">Not Done</option>
+                            </select>
+                    <% } %>
+                    <% if(i.records[l].status === 'not done') { %>
+                        <i class="not-done-symbol bi bi-file-x-fill"></i>
+                        <select name="status" class="status" value="Not Done" style="background-color: red; color: aliceblue;">
+                            <option value="not done" style="background-color: red;">Not Done</option>
+                            <option value="none" style="background-color: yellow;">None</option>
+                            <option value="done" style="background-color: green;">Done</option>
+                        </select>
+                    <% } %>
+                    <button type="submit" class="status-update-btn"><i class="bi bi-hand-thumbs-up-fill"></i></button>
+                </form>
+                <a href="/details/<%= i.id %>"><button class="view-btn">
+                    <i class="bi bi-eye-fill"></i> view
+                </button></a>
+                <a href="/delete/<%= i.id %>" class="delete">
+                    <button><i class=" delete-symbol bi-trash3-fill"></i></button> 
+                </a>
+            </div>
+            <% } %>
+        </div>
+    <% } %>
+
+</div>
+</body>
+</html>
+
